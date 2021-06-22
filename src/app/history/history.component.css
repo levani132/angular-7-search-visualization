@@ -1,0 +1,39 @@
+.board {
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 0;
+}
+
+.row {
+  margin-bottom: 0.2px;
+  height: 10px;
+}
+
+.cell {
+  display: inline-block;
+  width: 10px;
+  height: 100%;
+  border: 0.2px solid black;
+  margin-right: -0.2px;
+}
+
+.current {
+  background-color: deepskyblue;
+}
+
+.seen {
+  background-color: yellowgreen;
+}
+
+.start {
+  background-color: green;
+}
+
+.search {
+  background-color: red;
+}
+
+.details {
+  display: inline-block;
+  vertical-align: top;
+}

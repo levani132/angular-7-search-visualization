@@ -1,0 +1,13 @@
+<app-form [running]="running" (runningChange)="startSearch()" [(algorithm)]="algorithm" [(nRows)]="nRows"
+  [(nCols)]="nCols" (updateBoard)="updateBoard()" [(hardness)]="maxHardness" [(speed)]="speed" (clearBoard)="onClear()">
+</app-form>
+<div class="board-wrapper">
+  <div class="board">
+    <div *ngFor="let row of board; let i = index;" class="row">
+      <div *ngFor="let cell of row; let j = index" [class]="'cell ' + cell.state + ' ' + cell.type"
+        [ngStyle]="{ 'background-color': cell.color }" (click)="onClickCell(cell)">
+      </div>
+    </div>
+  </div>
+</div>
+<app-history [history]="history" (historyChange)="onChooseHistory($event)"></app-history>
