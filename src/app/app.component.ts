@@ -1,4 +1,10 @@
-import { Component, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef,
+  ViewEncapsulation,
+  HostBinding,
+  HostListener
+} from '@angular/core';
 import { SearchArray } from './search-array';
 
 const N_ROWS = 15;
@@ -89,6 +95,22 @@ export class AppComponent {
   algorithm: 'dfs' | 'bfs' | 'dijkstra' | 'aStar' = 'aStar';
   maxHardness = MAX_HARDNESS;
   speed: number = 500;
+  mousedown = false;
+
+  @HostBinding('style.position') position = 'relative';
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.overflow') overflow = 'hidden';
+  @HostBinding('style.width.vw') width = 100;
+
+  @HostListener('mousedown')
+  startMoving() {
+    this.mousedown = true;
+  }
+
+  @HostListener('mouseup')
+  endMoving() {
+    this.mousedown = false;
+  }
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -168,7 +190,6 @@ export class AppComponent {
   }
 
   onClickCell(cell: Cell) {
-    console.log('asdasd');
     cell.addHardness();
     this.cdr.detectChanges();
   }

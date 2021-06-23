@@ -1,0 +1,17 @@
+<div *ngFor="let h of history" class="history-item">
+  <div class="board" (click)="historyChange.emit(h)">
+    <div *ngFor="let row of h[0]; let i = index;" class="row">
+      <div *ngFor="let cell of row; let j = index" [class]="'cell ' + cell.state + ' ' + cell.type"
+        [ngStyle]="{'background-color': cell.color}">
+      </div>
+    </div>
+  </div>
+  <div class="details">
+    <div>nRows: {{h[0].length}}</div>
+    <div>nCols: {{h[0][0].length}}</div>
+    <div>Cost: {{cost(h)}}</div>
+  </div>
+</div>
+<div class="ribbon">
+  <i class="fa fa-history" style="font-size:24px"></i>
+</div>

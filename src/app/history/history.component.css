@@ -1,3 +1,36 @@
+:host {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  box-shadow: 0px 0px 5px -2px rgba(0, 0, 0, 0.75);
+  z-index: 200;
+  background-color: white;
+  height: 100vh;
+  transition: transform 0.2s;
+}
+
+:host:hover {
+  transform: translateX(0);
+}
+
+.ribbon {
+  position: absolute;
+  top: 20px;
+  transform: translateX(-100%);
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0px 0px 5px -2px rgba(0, 0, 0, 0.75);
+}
+
+.history-item {
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background-color: #3b85e550;
+}
+
 .board {
   cursor: pointer;
   display: inline-block;

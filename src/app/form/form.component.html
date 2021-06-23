@@ -1,0 +1,18 @@
+<div class="dimensions">
+  <input type="text" [ngModel]="nRows" (ngModelChange)="nRowsChange.emit($event)" (input)="updateBoard.emit()" [disabled]="running">
+  x
+  <input type="text" [ngModel]="nCols" (input)="nColsChange.emit($event.target.value); updateBoard.emit()" [disabled]="running">
+</div>
+<select [ngModel]="algorithm" (ngModelChange)="algorithmChange.emit($event)" (input)="updateBoard.emit()" [disabled]="running">
+  <option value="dfs">dfs</option>
+  <option value="bfs">bfs</option>
+  <option value="dijkstra">dijkstra</option>
+  <option value="aStar">aStar</option>
+</select>
+<input class="hardness" type="text" [ngModel]="hardness" (input)="hardnessChange.emit($event.target.value); updateBoard.emit()" [disabled]="running">
+<input class="speed" type="range" min="0" max="990" [ngModel]="speed" (input)="speedChange.emit($event.target.value);">
+<div class="buttons">
+  <button class="primary" (click)="runningChange.emit(!running)">{{!running ? 'Start' : 'Stop'}}</button>
+  <button (click)="updateBoard.emit()" [disabled]="running">Reset</button>
+  <button (click)="clearBoard.emit()" [disabled]="running">Clear</button>
+</div>

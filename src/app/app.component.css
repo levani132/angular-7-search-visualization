@@ -31,16 +31,31 @@ p {
   display: inline-block;
   flex: 1;
   border-radius: 5px;
-  box-shadow: 1px 2px 5px -3px rgba(0,0,0,0.75);
+  box-shadow: 1px 2px 5px -3px rgba(0, 0, 0, 0.75);
   margin: 8px;
   transform: perspective(100px) rotateX(30deg) rotateY(5deg);
   position: relative;
   cursor: pointer;
-  transition: transform .2s;
+  transition: transform 0.2s;
+}
+
+.content {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(255, 255, 255);
+  mix-blend-mode: difference;
+  user-select: none;
 }
 
 .cell:hover {
   transform: perspective(100px) scale(1.2);
+}
+
+.cell:hover .content {
+  display: block;
 }
 
 .cell:before {
