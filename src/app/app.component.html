@@ -5,8 +5,8 @@
   <div class="board">
     <div *ngFor="let row of board; let i = index;" class="row">
       <div *ngFor="let cell of row; let j = index" [class]="'cell ' + cell.state + ' ' + cell.type"
-        [ngStyle]="{ 'background-color': cell.color }" (mousedown)="onClickCell(cell)"
-        (mouseenter)="mousedown && onClickCell(cell)">
+        [ngStyle]="{ 'background-color': cell.color, animationDuration: cell.appearAfter + 'ms' }"
+        (mousedown)="onClickCell(cell)" (mouseenter)="mousedown && onClickCell(cell)">
         <span class="content">{{ cell.hardness }}</span>
       </div>
     </div>

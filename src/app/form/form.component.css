@@ -1,25 +1,32 @@
 :host {
   position: absolute;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  width: 600px;
+  flex-direction: column;
+  max-width: 100vw;
   justify-content: space-around;
-  white-space: nowrap;
   padding: 10px;
   z-index: 100;
   background-color: white;
-  box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px -2px rgba(0, 0, 0, 0.75);
   border-radius: 0 0 2px 2px;
-  opacity: .2;
-  transition: opacity .2s;
+  opacity: 0.2;
+  transition: opacity 0.2s;
 }
 
 :host:hover {
   opacity: 1;
 }
 
-select, input, button {
+.dimensions {
+  white-space: nowrap;
+}
+
+select,
+input,
+button {
   height: 30px;
   border-radius: 2px;
   margin: 0 2px;
@@ -27,7 +34,8 @@ select, input, button {
   cursor: pointer;
 }
 
-select, input {
+select,
+input {
   box-sizing: border-box;
   background-color: none;
   border: 1px solid #888;
@@ -35,16 +43,20 @@ select, input {
 }
 
 input {
-  width: 50px;
+  max-width: 50px;
   cursor: auto;
 }
 
 input.hardness {
-  width: 70px;
+  max-width: 70px;
 }
 
 input.speed {
   padding: 0;
+}
+
+.buttons {
+  white-space: nowrap;
 }
 
 button {
@@ -52,6 +64,6 @@ button {
 }
 
 button.primary {
-  background-color: #3B84E5;
+  background-color: #3b84e5;
   color: white;
 }

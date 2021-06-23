@@ -10,6 +10,7 @@ import { SearchArray } from './search-array';
 const N_ROWS = 15;
 const N_COLS = 15;
 const MAX_HARDNESS = 10000;
+const APPEAR_DURATION = 5000;
 
 class Cell {
   constructor(
@@ -21,7 +22,8 @@ class Cell {
     public state: 'current' | 'seen' | 'empty' = 'empty',
     public type: 'start' | 'search' = null,
     public weight = Infinity,
-    public path = []
+    public path = [],
+    public appearAfter = Math.random() * APPEAR_DURATION
   ) {}
 
   get children() {

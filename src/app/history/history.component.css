@@ -16,7 +16,7 @@
 
 .ribbon {
   position: absolute;
-  top: 20px;
+  top: 60px;
   transform: translateX(-100%);
   background-color: white;
   padding: 10px;

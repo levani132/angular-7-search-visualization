@@ -22,6 +22,7 @@ p {
 
 .row {
   display: flex;
+  justify-content: center;
   width: 100%;
   flex: 1;
   margin-bottom: 1px;
@@ -32,11 +33,12 @@ p {
   flex: 1;
   border-radius: 5px;
   box-shadow: 1px 2px 5px -3px rgba(0, 0, 0, 0.75);
-  margin: 8px;
+  margin: 6px;
   transform: perspective(100px) rotateX(30deg) rotateY(5deg);
   position: relative;
   cursor: pointer;
   transition: transform 0.2s;
+  animation: appear;
 }
 
 .content {
@@ -78,4 +80,14 @@ p {
 
 .search {
   background-color: red;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
