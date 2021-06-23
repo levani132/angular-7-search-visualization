@@ -20,7 +20,8 @@
   transform: translateX(-100%);
   background-color: white;
   padding: 10px;
-  box-shadow: 0px 0px 5px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: -3px 0px 5px -3px rgba(0, 0, 0, 0.75);
+  border-radius: 2px 0 0 2px;
 }
 
 .history-item {
