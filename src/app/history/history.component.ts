@@ -15,6 +15,8 @@ export class HistoryComponent implements OnInit {
   ngOnInit() {}
 
   cost(h) {
-    return h[3].path.reduce((sum, i) => sum + i.hardness, 0).toFixed(2);
+    return (
+      h[3].path.reduce((sum, i) => sum + i.hardness, 0) + h[3].path.length
+    ).toFixed(2);
   }
 }

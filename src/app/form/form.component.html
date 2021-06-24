@@ -1,16 +1,16 @@
 <div class="row upper">
   <div class="dimensions">
-    <input type="text" [ngModel]="nRows" (ngModelChange)="nRowsChange.emit($event)" (input)="updateBoard.emit()" [disabled]="running">
+    <input type="text" [ngModel]="nRows" (input)="nRowsChange.emit($event.target.value)" [disabled]="running">
     x
-    <input type="text" [ngModel]="nCols" (input)="nColsChange.emit($event.target.value); updateBoard.emit()" [disabled]="running">
+    <input type="text" [ngModel]="nCols" (input)="nColsChange.emit($event.target.value)" [disabled]="running">
   </div>
-  <select [ngModel]="algorithm" (ngModelChange)="algorithmChange.emit($event)" (input)="updateBoard.emit()" [disabled]="running">
+  <select [ngModel]="algorithm" (change)="algorithmChange.emit($event.target.value)" [disabled]="running">
     <option value="dfs">dfs</option>
     <option value="bfs">bfs</option>
     <option value="dijkstra">dijkstra</option>
     <option value="aStar">aStar</option>
   </select>
-  <input class="hardness" type="text" [ngModel]="hardness" (input)="hardnessChange.emit($event.target.value); updateBoard.emit()" [disabled]="running">
+  <input class="hardness" type="text" [ngModel]="hardness" (input)="hardnessChange.emit($event.target.value)" [disabled]="running">
 </div>
 
 <div class="row lower">

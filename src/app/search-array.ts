@@ -46,6 +46,8 @@ const pop = weightKey => ({
   },
   dijkstra() {
     const res = this[0];
+    this[0] = this[this.length - 1];
+    this.splice(this.length - 1, 1);
     bubbleDown(this, 0, weightKey);
     return res;
   },

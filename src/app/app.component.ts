@@ -99,6 +99,7 @@ export class AppComponent {
   maxHardness = MAX_HARDNESS;
   speed: number = 500;
   mousedown = false;
+  inf = Infinity;
 
   @HostBinding('style.position') position = 'relative';
   @HostBinding('style.display') display = 'block';
@@ -163,8 +164,8 @@ export class AppComponent {
   }
 
   clearPathBoard() {
-    this.pathBoard = this.range(+this.nRows).map(() =>
-      this.range(+this.nCols).map(() => null)
+    this.pathBoard = this.range(this.board?.length).map(() =>
+      this.range(this.board?.[0]?.length).map(() => null)
     );
     this.boardWrapper.path = this.pathBoard;
   }
@@ -246,7 +247,7 @@ export class AppComponent {
       const children = item.children
         .map(child => {
           const pathWalked = item.pathWalked + child.hardness + 1;
-          if (child.pathWalked <= pathWalked) {
+          if (!['dfs', 'bfs'].includes(type) && child.pathWalked <= pathWalked || child.hardness === MAX_HARDNESS) {
             return;
           }
           child.pathWalked = pathWalked;
