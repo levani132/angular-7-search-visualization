@@ -11,7 +11,7 @@ const bubbleDown = (array, index, weightKey) => {
   if (!array[index]) return;
   const [a, b] = [index * 2 + 1, index * 2 + 2];
   const better = (a, b) =>
-    array[a] && (!array[b] || array[b][weightKey] > array[a][weightKey]);
+    array[a] && (!array[b] || array[b][weightKey] >= array[a][weightKey]);
   const child = better(a, b) ? a : better(b, a) ? b : null;
   if (child === null) return;
   [array[child], array[index]] = [array[index], array[child]];
