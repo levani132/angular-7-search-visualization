@@ -23,7 +23,8 @@ class Cell {
     public type: 'start' | 'search' = null,
     public weight = Infinity,
     public path = [],
-    public appearAfter = Math.random() * APPEAR_DURATION
+    public appearAfter = Math.random() * APPEAR_DURATION,
+    public pathWalked = Infinity
   ) {}
 
   get children() {
@@ -235,19 +236,27 @@ export class AppComponent {
       Math.abs(searchItem.x - item.x) + Math.abs(searchItem.y - item.y);
     const arr = new SearchArray(type, h);
     arr.push(tree);
+    tree.pathWalked = 0;
     while (arr.length) {
       if (!this.running) break;
       const item = arr.pop();
       this.fillPathBoard(item.path);
       if (item.x === this.search.x && item.y === this.search.y) break;
       if (item.state === 'seen') continue;
-      item.children.forEach(child => {
-        child.weight =
-          item.path.length + child.hardness + (type === 'aStar' ? h(child) : 0);
-        child.path = [...item.path, child];
-        child.state = 'current';
-      });
-      arr.pushAll(...item.children);
+      const children = item.children
+        .map(child => {
+          const pathWalked = item.pathWalked + child.hardness + 1;
+          if (child.pathWalked <= pathWalked) {
+            return;
+          }
+          child.pathWalked = pathWalked;
+          child.weight = pathWalked + (type === 'aStar' ? h(child) : 0);
+          child.path = [...item.path, child];
+          child.state = 'current';
+          return child;
+        })
+        .filter(child => !!child);
+      arr.pushAll(...children);
       item.state = 'seen';
       this.cdr.detectChanges();
       await this.sleep(1000 - this.speed);
